@@ -1,15 +1,16 @@
 import 'package:dartz/dartz.dart';
 import 'package:to_do_clean/features/core/data/models/failure.dart';
 import 'package:to_do_clean/features/core/domain/usecases/usecase.dart';
+import 'package:to_do_clean/features/todo/domain/entities/todo.dart';
 import 'package:to_do_clean/features/todo/domain/repositories/todo_repo.dart';
 
-class DeleteTodoUseCase extends UseCase<void, String> {
-  DeleteTodoUseCase(this._todoRepository);
+class GetTodoListUseCase extends UseCase<List<TodoEntity>, void> {
+  GetTodoListUseCase(this._todoRepository);
   final TodoRepository _todoRepository;
   @override
-  Future<Either<Failure, void>> call(String params) async {
+  Future<Either<Failure, List<TodoEntity>>> call(void params) async {
     try {
-      return _todoRepository.deleteTodo(params);
+      return _todoRepository.getTodoList();
     } catch (e) {
       return Left(ServerFailure(e.toString()));
     }

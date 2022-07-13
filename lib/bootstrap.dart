@@ -10,6 +10,10 @@ import 'dart:developer';
 
 import 'package:bloc/bloc.dart';
 import 'package:flutter/widgets.dart';
+import 'package:hive_flutter/hive_flutter.dart';
+import 'package:to_do_clean/features/todo/data/models/todo.dart';
+import 'package:to_do_clean/utils/di.dart';
+import 'package:to_do_clean/utils/hive.dart';
 
 class AppBlocObserver extends BlocObserver {
   @override
@@ -26,6 +30,9 @@ class AppBlocObserver extends BlocObserver {
 }
 
 Future<void> bootstrap(FutureOr<Widget> Function() builder) async {
+  await initHive();
+  await initDI();
+
   FlutterError.onError = (details) {
     log(details.exceptionAsString(), stackTrace: details.stack);
   };

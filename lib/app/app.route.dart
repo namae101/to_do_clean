@@ -9,7 +9,10 @@ import 'package:to_do_clean/features/todo/presentation/pages/todo_page.dart';
       initial: true,
       path: '/',
       children: <AutoRoute>[
-        AutoRoute(page: TodoPage, path: 'todo'),
+        AutoRoute(
+          page: TodoPage,
+          path: 'todo',
+        ),
       ],
     ),
   ],
